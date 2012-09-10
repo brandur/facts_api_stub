@@ -32,9 +32,18 @@ describe FactsApiStub do
       get "/categories/other"
       last_response.status.must_equal 404
     end
+
+    it "PUT /categories" do
+      put "/categories"
+      last_response.status.must_equal 401
+    end
   end
 
   describe "authenticated" do
+    before do
+      authorize "", "secret"
+    end
+
     it "GET /categories" do
       get "/categories"
       last_response.status.must_equal 200

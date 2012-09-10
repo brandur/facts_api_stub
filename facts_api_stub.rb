@@ -1,5 +1,17 @@
 class FactsApiStub < Sinatra::Base
   helpers do
+    def auth
+      @auth ||= Rack::Auth::Basic::Request.new(request.env)
+    end
+
+    def auth_credentials
+      auth.provided? && auth.basic? ? auth.credentials : nil
+    end
+
+    def authorized!
+      raise ApiError.new(401) unless auth_credentials
+    end
+
     def require_params!(*keys)
       keys.each do |key|
         raise ApiError.new(400) unless params[key]
@@ -24,6 +36,7 @@ class FactsApiStub < Sinatra::Base
   end
 
   put "/categories" do
+    authorized!
     require_params!(:categories)
     respond({})
   end
@@ -39,17 +52,20 @@ class FactsApiStub < Sinatra::Base
 
   # 200 for the known category
   put "/categories/canada" do
+    authorized!
     require_params!(:category)
     respond(category)
   end
 
   # 201 for any other category
   put "/categories/:slug" do
+    authorized!
     require_params!(:category)
     respond(category, status: 201)
   end
 
   delete "/categories/canada" do
+    authorized!
     respond(category)
   end
 
@@ -75,16 +91,19 @@ class FactsApiStub < Sinatra::Base
   end
 
   post "/facts" do
+    authorized!
     require_params!(:fact)
     respond(fact, status: 201)
   end
 
   put "/facts/1" do
+    authorized!
     require_params!(:fact)
     respond(fact)
   end
 
   delete "/facts/1" do
+    authorized!
     respond(fact)
   end
 
