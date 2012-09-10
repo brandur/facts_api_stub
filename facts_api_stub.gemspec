@@ -1,5 +1,5 @@
 Gem::Specification.new do |gem|
-  gem.name        = "facts_api_gemspec"
+  gem.name        = "facts_api_stub"
   gem.version     = "0.1.0"
 
   gem.author      = "Brandur"
