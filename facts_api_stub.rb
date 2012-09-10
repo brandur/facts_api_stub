@@ -109,11 +109,11 @@ class FactsApiStub < Sinatra::Base
   def category
     {
       id:        1,
-      name:      "Canada",
-      slug:      "canada",
+      name:      "Heroku",
+      slug:      "heroku",
       facts:     [{
         id:      1,
-        content: "Canada is very big.",
+        content: "Heroku's API team is rockin'.",
       }]
     }
   end
@@ -121,11 +121,11 @@ class FactsApiStub < Sinatra::Base
   def fact
     {
       id:         1,
-      content:    "Canada is very big.",
+      content:    "Heroku's API team is rockin'.",
       category:   {
         id:       1,
-        name:     "Canada",
-        slug:     "canada",
+        name:     "Heroku",
+        slug:     "heroku",
       }
     }
   end
