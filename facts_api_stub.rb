@@ -49,12 +49,12 @@ class FactsApiStub < Sinatra::Base
     respond(category)
   end
 
-  get "/categories/canada" do
+  get "/categories/heroku" do
     respond(category)
   end
 
   # 200 for the known category
-  put "/categories/canada" do
+  put "/categories/heroku" do
     require_params!(:category)
     respond(category)
   end
@@ -65,7 +65,7 @@ class FactsApiStub < Sinatra::Base
     respond(category, status: 201)
   end
 
-  delete "/categories/canada" do
+  delete "/categories/heroku" do
     respond(category)
   end
 

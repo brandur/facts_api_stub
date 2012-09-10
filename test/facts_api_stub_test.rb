@@ -23,8 +23,8 @@ describe FactsApiStub do
       last_response.status.must_equal 200
     end
 
-    it "GET /categories/canada" do
-      get "/categories/canada"
+    it "GET /categories/heroku" do
+      get "/categories/heroku"
       last_response.status.must_equal 200
     end
 
@@ -59,8 +59,8 @@ describe FactsApiStub do
       last_response.status.must_equal 200
     end
 
-    it "PUT /category/canada" do
-      put "/categories/canada", :category => "{}"
+    it "PUT /category/heroku" do
+      put "/categories/heroku", :category => "{}"
       last_response.status.must_equal 200
     end
 
