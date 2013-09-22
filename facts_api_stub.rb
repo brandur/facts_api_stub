@@ -1,3 +1,6 @@
+require "multi_json"
+require "sinatra/base"
+
 class FactsApiStub < Sinatra::Base
   helpers do
     def auth
